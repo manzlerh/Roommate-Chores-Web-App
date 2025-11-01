@@ -1,73 +1,44 @@
-# React + TypeScript + Vite
+### Roommates Chores App 🧹
+*A gamified Progressive Web App for chore tracking among 5 college housemates.*
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+This project is a mobile-first PWA built with **React**, **TypeScript**, and **Supabase** that makes household chores fair and fun through gamification and social incentives.
 
-Currently, two official plugins are available:
+## Core Features
+- Weighted chores with point values
+- Personal dashboards + public leaderboard
+- Photo verification for chore completion
+- Streak tracking and achievement badges
+- Weekly/monthly fairness tracking
+- Social incentives (red zones, public debt, funny titles)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
+- **Frontend:** React + TypeScript + TailwindCSS (Vite)
+- **Backend:** Supabase (Postgres, Auth, Storage, Realtime)
+- **Hosting:** Vercel (frontend) + Supabase (backend)
+- **Testing:** Jest + React Testing Library + Cypress
 
-## React Compiler
+## Project Setup
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# 1. Clone the repo
+```bash
+git clone https://github.com/harrymanzler/roommates-chores-app.git
+cd roommates-chores-app
 
-## Expanding the ESLint configuration
+# 2. Install Dependencies
+npm install
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+# 3. Add environment variables
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_ANON_KEY=your-public-anon-key
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+# 4. Run the app locally
+npm run dev
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Roadmap
+- Authentication + User Profiles
+- Chore CRUD + Quick Logging
+- Leaderboard + Weekly Stats
+- Photo Verification Flow
+- Streaks + Badges System
+- PWA Offline Support
