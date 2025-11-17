@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { useUser } from "../context/UserContext";
+import AvatarUploader from "./AvatarUploader"; 
+
 
 export default function ProfileSettings() {
   const { user } = useUser();
@@ -56,12 +58,19 @@ export default function ProfileSettings() {
         onChange={(e) => setBio(e.target.value)}
         className="border rounded w-full p-2 mb-3"
       />
-      <label className="block mb-2">Avatar URL</label>
-      <input
-        type="text"
-        value={avatarUrl}
-        onChange={(e) => setAvatarUrl(e.target.value)}
-        className="border rounded w-full p-2 mb-3"
+      <h3 className="font-semibold mb-2">Profile Picture</h3>
+      <AvatarUploader
+        avatarUrl={avatarUrl}
+        onUpload={async (url) => {
+          setAvatarUrl(url);
+          if (user) {
+            const { error } = await supabase
+              .from("users")
+              .update({ avatar_url: url })
+              .eq("id", user.id);
+            if (error) console.error(error);
+          }
+        }}
       />
       <button
         onClick={handleSave}
